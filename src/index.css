@@ -1,0 +1,56 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --midnight: #001a62;
+  --midnight-deep: #00103d;
+  --midnight-mid: #001e73;
+  --midnight-light: #002694;
+  --white: #f8f9ff;
+  --white-muted: rgba(248, 249, 255, 0.7);
+  --white-dim: rgba(248, 249, 255, 0.12);
+  --accent: #4a7cff;
+  --accent-soft: rgba(74, 124, 255, 0.12);
+  --gold: #c9a84c;
+  --gold-soft: rgba(201, 168, 76, 0.15);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--midnight-deep);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--midnight-deep); }
+::-webkit-scrollbar-thumb { background: rgba(74,124,255,0.4); border-radius: 2px; }
+
+a { color: inherit; text-decoration: none; }
+button { font-family: 'Outfit', sans-serif; cursor: pointer; border: none; outline: none; }
+input, textarea, select { font-family: 'Outfit', sans-serif; }
+
+/* Noise grain — fixed, pointer-events-none, no scroll repaint */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
