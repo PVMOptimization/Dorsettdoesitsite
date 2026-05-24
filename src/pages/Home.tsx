@@ -99,13 +99,35 @@ function useVideoSection(
     const video = videoRef.current
     if (!wrapper || !video) return
 
+    // Detect mobile — iOS/Android scroll events are NOT user gestures,
+    // so play() called from a scroll handler is blocked. We let autoPlay
+    // handle video display on mobile and only scrub on desktop.
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+      || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)
+
+    // ── Mobile path: just track phase, autoPlay+loop handles the video ──
+    if (isMobile) {
+      const onScroll = () => {
+        const rect = wrapper.getBoundingClientRect()
+        const scrolledIn = -rect.top
+        const total = rect.height - window.innerHeight
+        const p = total > 0 ? Math.max(0, Math.min(1, scrolledIn / total)) : 0
+        setProgress(p)
+        setPhase(Math.min(numPhases - 1, Math.floor(p * numPhases)))
+      }
+      window.addEventListener('scroll', onScroll, { passive: true })
+      onScroll()
+      return () => window.removeEventListener('scroll', onScroll)
+    }
+
+    // ── Desktop path: rAF-throttled scroll scrub ──
+    // autoPlay already starts the video, so the play()→pause() unlock
+    // below succeeds immediately — no waiting for user gesture.
     let unlocked = false
     let latestProgress = 0
     let rafId = 0
 
-    // rAF-throttled seek — browser processes one seek per frame max.
-    // * 1.25 means at p=0.80 the video is at 100% duration, so the final
-    // frame is reached well before the scroll section ends.
+    // * 1.25 → video hits 100% at p=0.80, final frame held for last 20% of scroll
     const seek = (p: number) => {
       cancelAnimationFrame(rafId)
       rafId = requestAnimationFrame(() => {
@@ -114,7 +136,6 @@ function useVideoSection(
       })
     }
 
-    // Once metadata loads, apply whatever scroll position we're already at
     const onMeta = () => seek(latestProgress)
     video.addEventListener('loadedmetadata', onMeta)
 
@@ -128,14 +149,15 @@ function useVideoSection(
       setProgress(p)
       setPhase(Math.min(numPhases - 1, Math.floor(p * numPhases)))
 
-      // First scroll: play→pause to unlock seeking (must be in scroll context)
       if (!unlocked) {
         unlocked = true
         try {
+          // autoPlay already started the video, so play() resolves instantly.
+          // Pausing immediately hands currentTime control to scroll.
           await video.play()
           video.pause()
         } catch (_) {
-          // Some browsers allow seeking without this — that's fine
+          // Browser may allow seeking without this — continue either way
         }
       }
 
@@ -143,7 +165,7 @@ function useVideoSection(
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll() // run once for initial position
+    onScroll()
 
     return () => {
       cancelAnimationFrame(rafId)
@@ -315,12 +337,14 @@ function VideoSection({
         height: '100dvh',
         overflow: 'hidden',
       }}>
-        {/* Video — scroll-scrubbed only, no autoplay */}
+        {/* autoPlay+loop → always visible on mobile & provides desktop unlock */}
         <video
           ref={videoRef}
           src={src}
           muted
           playsInline
+          autoPlay
+          loop
           preload="auto"
           style={{
             position: 'absolute',
