@@ -107,7 +107,7 @@ export default function BookNow() {
               background: 'rgba(0,0,0,0.4)',
             }}>
               <video
-                src="/public/mainvid.mp4"
+                src="/mainvid.mp4"
                 autoPlay
                 muted
                 loop
@@ -148,7 +148,7 @@ export default function BookNow() {
               boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
             }}>
               <img
-                src="public/Homeremodel.jpg"
+                src="/Homeremodel.jpg"
                 alt="Completed Exterior Remodel in Fort Wayne"
                 loading="lazy"
                 style={{
@@ -186,7 +186,7 @@ export default function BookNow() {
               boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
             }}>
               <img
-                src="public/Bathroom.jpg"
+                src="/Bathroom.jpg"
                 alt="Completed bathroom remodel in Fort Wayne"
                 loading="lazy"
                 style={{
@@ -224,7 +224,7 @@ export default function BookNow() {
               boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
             }}>
               <img
-                src="public/Deck.jpg"
+                src="/Deck.jpg"
                 alt="Completed deck build in Fort Wayne"
                 loading="lazy"
                 style={{
