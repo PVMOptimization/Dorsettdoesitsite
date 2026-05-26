@@ -55,6 +55,206 @@ export default function BookNow() {
         </motion.div>
       </section>
 
+      {/* NEW: Proof Gallery — Video + Photos */}
+      <section style={{
+        maxWidth: 1200,
+        margin: '0 auto',
+        padding: '3rem 1.5rem 1rem',
+      }}>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <span style={{
+              display: 'inline-block',
+              fontSize: '0.7rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'rgba(248,249,255,0.5)',
+              marginBottom: '0.75rem',
+            }}>Recent Work in Fort Wayne</span>
+            <h2 style={{
+              fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+              fontWeight: 800,
+              letterSpacing: '-0.02em',
+              color: '#f8f9ff',
+              margin: 0,
+            }}>See What Honest Work Looks Like</h2>
+          </div>
+
+          {/* Media grid */}
+          <div
+            className="proof-gallery"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '1rem',
+              maxWidth: 1100,
+              margin: '0 auto',
+            }}
+          >
+            {/* Video — finished job */}
+            <div style={{
+              position: 'relative',
+              aspectRatio: '9 / 16',
+              borderRadius: 16,
+              overflow: 'hidden',
+              border: '1px solid rgba(74,124,255,0.2)',
+              boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
+              background: 'rgba(0,0,0,0.4)',
+            }}>
+              <video
+                src="/public/mainvid.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+              <div style={{
+                position: 'absolute',
+                bottom: 12,
+                left: 12,
+                padding: '6px 12px',
+                borderRadius: 6,
+                background: 'rgba(3,19,64,0.85)',
+                backdropFilter: 'blur(8px)',
+                color: '#f8f9ff',
+                fontSize: '0.7rem',
+                fontWeight: 600,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+              }}>
+                Just Finished
+              </div>
+            </div>
+
+            {/* Photo 1 */}
+            <div style={{
+              position: 'relative',
+              aspectRatio: '9 / 16',
+              borderRadius: 16,
+              overflow: 'hidden',
+              border: '1px solid rgba(74,124,255,0.15)',
+              boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
+            }}>
+              <img
+                src="public/Homeremodel.jpg"
+                alt="Completed Exterior Remodel in Fort Wayne"
+                loading="lazy"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+              <div style={{
+                position: 'absolute',
+                bottom: 12,
+                left: 12,
+                padding: '6px 12px',
+                borderRadius: 6,
+                background: 'rgba(3,19,64,0.85)',
+                backdropFilter: 'blur(8px)',
+                color: '#f8f9ff',
+                fontSize: '0.7rem',
+                fontWeight: 600,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+              }}>
+                Exterior Remodel
+              </div>
+            </div>
+
+            {/* Photo 2 */}
+            <div style={{
+              position: 'relative',
+              aspectRatio: '9 / 16',
+              borderRadius: 16,
+              overflow: 'hidden',
+              border: '1px solid rgba(74,124,255,0.15)',
+              boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
+            }}>
+              <img
+                src="public/Bathroom.jpg"
+                alt="Completed bathroom remodel in Fort Wayne"
+                loading="lazy"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+              <div style={{
+                position: 'absolute',
+                bottom: 12,
+                left: 12,
+                padding: '6px 12px',
+                borderRadius: 6,
+                background: 'rgba(3,19,64,0.85)',
+                backdropFilter: 'blur(8px)',
+                color: '#f8f9ff',
+                fontSize: '0.7rem',
+                fontWeight: 600,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+              }}>
+                Bathroom
+              </div>
+            </div>
+
+            {/* Photo 3 */}
+            <div style={{
+              position: 'relative',
+              aspectRatio: '9 / 16',
+              borderRadius: 16,
+              overflow: 'hidden',
+              border: '1px solid rgba(74,124,255,0.15)',
+              boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
+            }}>
+              <img
+                src="public/Deck.jpg"
+                alt="Completed deck build in Fort Wayne"
+                loading="lazy"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+              <div style={{
+                position: 'absolute',
+                bottom: 12,
+                left: 12,
+                padding: '6px 12px',
+                borderRadius: 6,
+                background: 'rgba(3,19,64,0.85)',
+                backdropFilter: 'blur(8px)',
+                color: '#f8f9ff',
+                fontSize: '0.7rem',
+                fontWeight: 600,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+              }}>
+                Deck
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
       {/* Main grid: form + sidebar */}
       <section style={{ maxWidth: 1200, margin: '0 auto', padding: '4rem 2rem 7rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'start' }}>
 
