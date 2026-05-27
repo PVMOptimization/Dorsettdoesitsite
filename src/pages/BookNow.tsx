@@ -50,7 +50,7 @@ export default function BookNow() {
             maxWidth: '50ch',
             margin: '0 auto',
           }}>
-            Sctoll & fill out the form below and we'll reach out within 24 hours to schedule your free, no-obligation consultation.
+            Scroll & fill out the form below and we'll reach out within 24 hours to schedule your free, no-obligation consultation.
           </p>
         </motion.div>
       </section>
