@@ -39,7 +39,7 @@ export default function BookNow() {
             color: '#f8f9ff',
             marginBottom: '1.25rem',
           }}>
-            Book Your Project<br />
+            Book Your Estimate<br />
             <span style={{ color: '#4a7cff' }}>Today</span>
           </h1>
 
