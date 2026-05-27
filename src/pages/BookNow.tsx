@@ -39,8 +39,8 @@ export default function BookNow() {
             color: '#f8f9ff',
             marginBottom: '1.25rem',
           }}>
-            Book Your Estimate<br />
-            <span style={{ color: '#4a7cff' }}>Today</span>
+            Licensed & Insured General Contracting in Fort Wayne.<br />
+            <span style={{ color: '#4a7cff' }}>Get Your Free Project Estimate Below</span>
           </h1>
 
           <p style={{
@@ -50,12 +50,12 @@ export default function BookNow() {
             maxWidth: '50ch',
             margin: '0 auto',
           }}>
-            Scroll & fill out the form below and we'll reach out within 24 hours to schedule your free, no-obligation consultation.
+            Fill out the form below and we'll reach out within 24 hours to schedule your free, no-obligation consultation.
           </p>
         </motion.div>
       </section>
 
-      {/* NEW: Proof Gallery — Video + Photos */}
+      {/* Proof Gallery — Video + Photos */}
       <section style={{
         maxWidth: 1200,
         margin: '0 auto',
@@ -107,7 +107,7 @@ export default function BookNow() {
               background: 'rgba(0,0,0,0.4)',
             }}>
               <video
-                src="/mainvid.mp4"
+                src="/public/mainvid.mp4"
                 autoPlay
                 muted
                 loop
@@ -148,7 +148,7 @@ export default function BookNow() {
               boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
             }}>
               <img
-                src="/Homeremodel.jpg"
+                src="public/Homeremodel.jpg"
                 alt="Completed Exterior Remodel in Fort Wayne"
                 loading="lazy"
                 style={{
@@ -186,7 +186,7 @@ export default function BookNow() {
               boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
             }}>
               <img
-                src="/Bathroom.jpg"
+                src="public/Bathroom.jpg"
                 alt="Completed bathroom remodel in Fort Wayne"
                 loading="lazy"
                 style={{
@@ -224,7 +224,7 @@ export default function BookNow() {
               boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
             }}>
               <img
-                src="/Deck.jpg"
+                src="public/Deck.jpg"
                 alt="Completed deck build in Fort Wayne"
                 loading="lazy"
                 style={{
@@ -258,38 +258,55 @@ export default function BookNow() {
       {/* Main grid: form + sidebar */}
       <section style={{ maxWidth: 1200, margin: '0 auto', padding: '4rem 2rem 7rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'start' }}>
 
-        {/* GHL Form */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            borderRadius: 20,
-            overflow: 'hidden',
-            border: '1px solid rgba(74,124,255,0.15)',
-            background: 'rgba(248,249,255,0.02)',
-            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04), 0 32px 64px rgba(0,0,0,0.3)',
-            minHeight: 1200,
-          }}
-        >
-          <iframe
-            src="https://api.leadconnectorhq.com/widget/form/Aj7x4thHuBOvZrORRbJh"
-            style={{ width: '100%', height: '100%', border: 'none', minHeight: 1200, display: 'block' }}
-            id="inline-Aj7x4thHuBOvZrORRbJh"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="Dorsett Does It "
-            data-height="1906"
-            data-layout-iframe-id="inline-Aj7x4thHuBOvZrORRbJh"
-            data-form-id="Aj7x4thHuBOvZrORRbJh"
-            title="Dorsett Does It "
-          />
-        </motion.div>
+        {/* GHL Form wrapper optimized for mobile scroll layout */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          
+          {/* 2026 Helper Message for Mobile Users */}
+          <div style={{
+            display: 'block',
+            padding: '0.75rem 1rem',
+            background: 'rgba(74,124,255,0.1)',
+            border: '1px solid rgba(74,124,255,0.25)',
+            borderRadius: 12,
+            fontSize: '0.85rem',
+            color: '#f8f9ff',
+            lineHeight: 1.4,
+          }}>
+            📱 <strong>Mobile Scroll Tip:</strong> If the form feels tight while typing, simply swipe or scroll using the background area surrounding the form blocks.
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              borderRadius: 20,
+              overflow: 'visible', // Fixed scroll trap: allows content height adjustments
+              border: '1px solid rgba(74,124,255,0.15)',
+              background: 'rgba(248,249,255,0.02)',
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04), 0 32px 64px rgba(0,0,0,0.3)',
+              height: 'auto', // Avoids rigid boxing issues
+            }}
+          >
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/Aj7x4thHuBOvZrORRbJh"
+              style={{ width: '100%', height: '820px', border: 'none', display: 'block', overflow: 'hidden' }}
+              id="inline-Aj7x4thHuBOvZrORRbJh"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Dorsett Does It "
+              data-height="820"
+              data-layout-iframe-id="inline-Aj7x4thHuBOvZrORRbJh"
+              data-form-id="Aj7x4thHuBOvZrORRbJh"
+              title="Dorsett Does It "
+            />
+          </motion.div>
+        </div>
 
         {/* Sidebar */}
         <motion.div
